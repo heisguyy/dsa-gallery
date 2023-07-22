@@ -1,4 +1,4 @@
-"""module showing the various sorting algoirthms"""
+"""module showing the implementation of various sorting algoirthms"""
 from typing import List
 
 def bubble_sort(arr: List[int]) -> List[int]:
