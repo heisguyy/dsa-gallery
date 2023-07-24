@@ -32,11 +32,11 @@ def selection_sort(arr: List[int]) -> List[int]:
         List[int]: the sorted version of the sequence inputted.
     """
     for i, _ in enumerate(arr):
-        index_of_minimum_value = -1
-        for index, value in enumerate(arr[i:]):
-            if index_of_minimum_value == -1 or value < arr[i + index_of_minimum_value]:
+        index_of_minimum_value = i
+        for index, value in enumerate(arr[i:],i):
+            if value < arr[index_of_minimum_value]:
                 index_of_minimum_value = index
-        arr[i], arr[i + index_of_minimum_value] = arr[i + index_of_minimum_value], arr[i]
+        arr[i], arr[index_of_minimum_value] = arr[index_of_minimum_value], arr[i]
     return arr
 
 
