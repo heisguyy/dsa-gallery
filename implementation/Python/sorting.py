@@ -40,6 +40,29 @@ def selection_sort(arr: List[int]) -> List[int]:
     return arr
 
 
+def insertion_sort(arr: List[int]) -> List[int]:
+    """
+    An implementation of the insertion sort algorithm used to arrange mutable sequences into
+    in a particular order
+
+    Args:
+        arr (List[int]): A sequence with unsorted elements.
+
+    Returns:
+        List[int]: the sorted version of the sequence inputted.
+    """
+
+    for i,_ in enumerate(arr):
+        if i == 0:
+            continue
+        for j in range(i,0,-1):
+            if arr[j-1] > arr[j]:
+                arr[j], arr[j-1] = arr[j-1], arr[j]
+            else:
+                break
+    return arr
+
 if __name__ == "__main__":
     print(bubble_sort([2,3,1,8,5,6,0]))
     print(selection_sort([2,3,1,8,5,6,0]))
+    print(insertion_sort([2,3,1,8,5,6,0]))
