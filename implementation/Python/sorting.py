@@ -51,7 +51,6 @@ def insertion_sort(arr: List[int]) -> List[int]:
     Returns:
         List[int]: the sorted version of the sequence inputted.
     """
-
     for i,_ in enumerate(arr):
         if i == 0:
             continue
@@ -62,7 +61,63 @@ def insertion_sort(arr: List[int]) -> List[int]:
                 break
     return arr
 
+def merge(first_array: List[int], second_array: List[int]) -> List[int]:
+    """
+    Helper function for the merge sort function implemented below
+
+    Args:
+        first_array (List[int]): sorted array to be merged. 
+        second_array (List[int]): sorted array to be merged.
+
+    Returns:
+        List[int]: Sorted array containing all the elements of the two input arrays.
+    """
+    first_arr_counter = 0
+    second_arr_counter = 0
+    new_arr = [0]*(len(first_array)+len(second_array))
+    new_arr_counter = 0
+    while first_arr_counter < len(first_array) and second_arr_counter < len(second_array):
+        if first_array[first_arr_counter] <= second_array[second_arr_counter]:
+            new_arr[new_arr_counter] = first_array[first_arr_counter]
+            first_arr_counter+=1
+        else:
+            new_arr[new_arr_counter] = second_array[second_arr_counter]
+            second_arr_counter+=1
+        new_arr_counter+=1
+
+    while first_arr_counter < len(first_array):
+        new_arr[new_arr_counter] = first_array[first_arr_counter]
+        first_arr_counter+=1
+        new_arr_counter+=1
+
+    while second_arr_counter < len(second_array):
+        new_arr[new_arr_counter] = second_array[second_arr_counter]
+        second_arr_counter+=1
+        new_arr_counter+=1
+
+    return new_arr
+
+def merge_sort(arr: List[int]) -> List[int]:
+    """
+    An implementation of the merge sort algorithm used to arrange a sequence in a 
+    particular order.
+
+    Args:
+        arr (List[int]): Unsorted sequence
+
+    Returns:
+        List[int]: Sorted sequence
+    """
+    if len(arr) == 1:
+        return arr
+    else:
+        middle = len(arr)//2
+        sorted_arr = merge(merge_sort(arr[:middle]), merge_sort(arr[middle:]))
+    return sorted_arr
+
+
 if __name__ == "__main__":
     print(bubble_sort([2,3,1,8,5,6,0]))
     print(selection_sort([2,3,1,8,5,6,0]))
     print(insertion_sort([2,3,1,8,5,6,0]))
+    print(merge_sort([29,10,14,37,14]))
