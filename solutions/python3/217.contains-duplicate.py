@@ -4,6 +4,7 @@
 # [217] Contains Duplicate
 #
 
+
 # @lc code=start
 class Solution:
     # def containsDuplicate(self, nums: List[int]) -> bool:
@@ -48,8 +49,10 @@ class Solution:
         # gotten to sorting algorithms.
         length_of_nums = len(nums)
         nums.sort()
-        for index in range(length_of_nums-1):
-            if nums[index] == nums[index+1]:
+        for index in range(length_of_nums - 1):
+            if nums[index] == nums[index + 1]:
                 return True
         return False
+
+
 # @lc code=end
